@@ -55,7 +55,8 @@ public class NasaIdImage extends AppCompatActivity {
                 int flag=0;
                 for (NasaAssetIDCollection.Collection.Item item : idCollection.getCollection().getItems()) {
                     if (item.getUrl().endsWith(".jpg")) {
-                        Picasso.with(getApplicationContext()).load(item.getUrl()).fit().into(imageView);
+                        Picasso.with(NasaIdImage.this).load(item.getUrl().replace("http","https")).fit().into(imageView);
+                        Log.d(TAG, "onResponse: "+item.getUrl());
                         flag++;
                         break;
                     }
